@@ -1,0 +1,26 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" x="34" y="41">
+    <statement name="SETUP_FUNC">
+      <block type="led_rgb_01" id="1nG8R,~@eMUDuniEBn{6">
+        <field name="PINR">4</field>
+        <field name="PING">7</field>
+        <field name="PINB">8</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="Ng|L2[]gc@N0i`nc2Uo0">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <value name="led_G">
+          <block type="logic_boolean" id="Au)y:WW7=^A%%ouB9Wew">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_B">
+          <block type="logic_boolean" id=".egg[V=vJ(s0xIzhn*~P">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>
