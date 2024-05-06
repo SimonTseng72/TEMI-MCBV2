@@ -1,0 +1,52 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="CJ4eZ!%/1G2(XSbLBOh7" x="90" y="50">
+    <statement name="SETUP_FUNC">
+      <block type="led_rgb_r" id="jlmQ}wtMZZBTJGEx!|fb">
+        <field name="PINR">4</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="VDRHA[6*LGB*,)~FuJ}C">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="led_rgb_r" id="#YrT+~Wq|{4:Zg8yEbO6">
+        <field name="PINR">4</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="~)y95gxCpP?iEs=GdP,o">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="_U@=zu3hTg^C@_dk`xEa">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="9=P:@(RH}5bL`0Y6S]hH">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="led_rgb_r" id="Y3@bQeRZQzxbgZ/]cFGh">
+                <field name="PINR">4</field>
+                <value name="led_R">
+                  <block type="logic_boolean" id="hC~_nT7F3eJr@_v*QCz4">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id=",nByIL(U=c/[TfuO-sWH">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="s8]rY7F_@c7FU5mIw|uh">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

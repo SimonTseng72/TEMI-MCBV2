@@ -1,0 +1,88 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="xSM7a#*[6),_}n^MOd{y" x="630" y="270">
+    <statement name="SETUP_FUNC">
+      <block type="led_rgb_01" id="LXMHx_kj1*hJQI]e@+]{">
+        <field name="PINR">4</field>
+        <field name="PING">7</field>
+        <field name="PINB">8</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="n)PzxjbW!w+c/M899xNX">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_G">
+          <block type="logic_boolean" id="x(Brq?a8dQLi~I#8(Dxo">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_B">
+          <block type="logic_boolean" id="gL5t+wF9nDUq)m_3b%-Z">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="led_rgb_01" id="#s8M}KRMIj.=F#;NLjcG">
+        <field name="PINR">4</field>
+        <field name="PING">7</field>
+        <field name="PINB">8</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="~dy./cALGdmusbu^d[9G">
+            <field name="BOOL">FALSE</field>
+          </block>
+        </value>
+        <value name="led_G">
+          <block type="logic_boolean" id="YX4m=[1(q3xv2ktJ7J^~">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_B">
+          <block type="logic_boolean" id="-?w^7VM|JU}:TwzF432%">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="#JuHcz-uHi??gn|FO]v.">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="D!]*KK!:4eC:Mjte~z66">
+                <field name="NUM">500</field>
+              </block>
+            </value>
+            <next>
+              <block type="led_rgb_01" id="5_/0v0{WF.%Efu0A2yT`">
+                <field name="PINR">4</field>
+                <field name="PING">7</field>
+                <field name="PINB">8</field>
+                <value name="led_R">
+                  <block type="logic_boolean" id="9%oR.7V~^XNPoJW-]9^I">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <value name="led_G">
+                  <block type="logic_boolean" id="BQ}:iD|~TNuM}.5KdC=s">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <value name="led_B">
+                  <block type="logic_boolean" id="JzDeP4hV(392/75y%7.t">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="pt8-.`[a_^?vucY=1S;1">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="w0k7H0tOiWY-rXGzkwYZ">
+                        <field name="NUM">500</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

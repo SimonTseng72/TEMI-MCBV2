@@ -1,0 +1,154 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="xSM7a#*[6),_}n^MOd{y" x="150" y="130">
+    <statement name="SETUP_FUNC">
+      <block type="led_rgb_01" id="P1Ft3)tiN9rDR.9wWtgn">
+        <field name="PINR">4</field>
+        <field name="PING">7</field>
+        <field name="PINB">8</field>
+        <value name="led_R">
+          <block type="logic_boolean" id="3CDT;hj+)V^HN{^_e[!o">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_G">
+          <block type="logic_boolean" id="0.xKx7)mv+;O^8h/db,`">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <value name="led_B">
+          <block type="logic_boolean" id="@jrf`sq2c/Mml%)e(DG]">
+            <field name="BOOL">TRUE</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="XuyL]u7P??TG(7bWY^-k">
+            <field name="VAR">color</field>
+            <value name="VALUE">
+              <block type="math_number" id="h1C0Jdu45d7q7QShy*88">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="led_rgb_01" id=")HG_!8O`LIEeqF)FGvyR">
+        <field name="PINR">4</field>
+        <field name="PING">7</field>
+        <field name="PINB">8</field>
+        <value name="led_R">
+          <block type="logic_ternary" id="-8aj`pyU`uz`tm_S%Yjw">
+            <value name="IF">
+              <block type="ops_arithmetic" id="#2.@Yi7?R!x6ZhL8:RK~">
+                <field name="OP">BITWISE_AND</field>
+                <value name="A">
+                  <block type="variables_get" id="~nIPIPSG!NtFC]u0[8n#">
+                    <field name="VAR">color</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="|Nx]=(x[GCr^!JciF(,s">
+                    <field name="NUM">1</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="THEN">
+              <block type="logic_boolean" id="|;kGylVbp-*pNaMkDGjo">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <value name="ELSE">
+              <block type="logic_boolean" id="=MS)wOD`VXf8PL@vh`34">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="led_G">
+          <block type="logic_ternary" id="b_}Pds*=/ej*CvdoH+6j">
+            <value name="IF">
+              <block type="ops_arithmetic" id="^82FkVN%g+F-CgPmy^Ri">
+                <field name="OP">BITWISE_AND</field>
+                <value name="A">
+                  <block type="variables_get" id="6YJ9I2lQZqBE[bMo4F*M">
+                    <field name="VAR">color</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="iGf^`Qv()XlcJ`n!i1J[">
+                    <field name="NUM">2</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="THEN">
+              <block type="logic_boolean" id="4A@IPiA3{A}(0QJ8K:},">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <value name="ELSE">
+              <block type="logic_boolean" id="sUSi}A67:G]zF:bvR|@s">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="led_B">
+          <block type="logic_ternary" id="(hbH/_W6GUh/.X2^^E}Q">
+            <value name="IF">
+              <block type="ops_arithmetic" id="!gKhP#^a|tB~Iuh{MXM(">
+                <field name="OP">BITWISE_AND</field>
+                <value name="A">
+                  <block type="variables_get" id="1i9w44S00WVql[_}=h%o">
+                    <field name="VAR">color</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="E;Uqz,7p9U%-%=OzG~f-">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="THEN">
+              <block type="logic_boolean" id="~){Z56[NSIX;e)?3,t1G">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+            <value name="ELSE">
+              <block type="logic_boolean" id="E^[4ZI%;6;4YX{.flf)T">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <next>
+          <block type="ops_compound" id="6%d~ib-MucDyU|ftgi]J">
+            <field name="OP">c_addition</field>
+            <value name="A">
+              <block type="variables_get" id="GE}WD#aVXe,h8zdlQkU}">
+                <field name="VAR">color</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="QQ|7yrAT^tTrUA~tEU~2">
+                <field name="NUM">1</field>
+              </block>
+            </value>
+            <next>
+              <block type="time_delay" id="(^xrbDaH4|lKyL1Ulin#">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="`0.#u(1D5}],UNM0yS+G">
+                    <field name="NUM">500</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
