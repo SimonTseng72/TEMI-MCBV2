@@ -1,0 +1,115 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="fPr5o.:+e_T1ulkWuAm7" x="46" y="159">
+    <statement name="SETUP_FUNC">
+      <block type="ps2x_setup" id="XFwP:=KA{udKnC*`xSqp">
+        <field name="Data">13</field>
+        <field name="Command">19</field>
+        <field name="Attention">18</field>
+        <field name="Clock">2</field>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="ps2x_read_gamepad" id="B1:9?^U@3.pvpE{o-q;u">
+        <next>
+          <block type="controls_if" id="{0T~M^X)7#{F?6]`N9dT">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="ps2x_button" id="}Y~Z_%M8^?xYhU(-q)0=">
+                <field name="PS2X_Button">PSB_CIRCLE</field>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="led_rgb_r" id="!@xg9%t0YDfTkfFHKsB(">
+                <field name="PINR">4</field>
+                <value name="led_R">
+                  <block type="logic_boolean" id="-Y/E}]52d/MTutD2X::t">
+                    <field name="BOOL">FALSE</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="led_rgb_r" id="pvspNRc^iCl+OV`qtQe,">
+                <field name="PINR">4</field>
+                <value name="led_R">
+                  <block type="logic_boolean" id="[d:mps,YhE}Y/`7;s)_#">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="controls_if" id="I0hHSBFpGKo]:i7mhBl+">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="ps2x_button" id="9Wn?a~489{FN%`2x`uGr">
+                    <field name="PS2X_Button">PSB_TRIANGLE</field>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="led_rgb_g" id="b(H[;-[pZ}TW)SxjZrhp">
+                    <field name="PING">7</field>
+                    <value name="led_G">
+                      <block type="logic_boolean" id="WB5p?qQY9;D[`ncd/Z~I">
+                        <field name="BOOL">FALSE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="led_rgb_g" id="OIh#3:cP@}OdcK1XcvP*">
+                    <field name="PING">7</field>
+                    <value name="led_G">
+                      <block type="logic_boolean" id="A5uLf;.2+?D}MA^whI~6">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <next>
+                  <block type="controls_if" id="ke(``WKp1^(`09!)83L8">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="ps2x_button" id="/~@4L-+!#t.Fo9S;@)Rr">
+                        <field name="PS2X_Button">PSB_CROSS</field>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="led_rgb_b" id="=OKWI4t7z`ZaLu;dq=ae">
+                        <field name="PINB">8</field>
+                        <value name="led_B">
+                          <block type="logic_boolean" id="t]2M/(p2k+^33*5~KiKR">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="led_rgb_b" id="B;5AeeTy%|jJA.2Amu]z">
+                        <field name="PINB">8</field>
+                        <value name="led_B">
+                          <block type="logic_boolean" id="W;:uadgthy)JgAAHnpsZ">
+                            <field name="BOOL">TRUE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="time_delay" id="cJ5awUKR1UlMf5wTT=s5">
+                        <value name="DELAY_TIME_MILI">
+                          <block type="math_number" id="hZqVwzqHl~f?/.HtseGz">
+                            <field name="NUM">16</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,387 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id=";;G*-_Tq`6GB6FaC9Xc1" x="-250" y="-470">
+    <statement name="SETUP_FUNC">
+      <block type="ps2x_setup" id="V9d`cwqER1dOo%[!zfix">
+        <field name="Data">13</field>
+        <field name="Command">19</field>
+        <field name="Attention">18</field>
+        <field name="Clock">2</field>
+        <next>
+          <block type="serial_setup" id="z901(Z916mpPTNJr0gb9">
+            <field name="SERIAL_ID">Serial</field>
+            <field name="SPEED">500000</field>
+            <next>
+              <block type="DCMotor_setup" id="CZVu,G2bXW(Hccrm*8Y!">
+                <field name="PWM_Phase">1</field>
+                <field name="ChL_1">5</field>
+                <field name="ChL_2">6</field>
+                <field name="ChR_1">10</field>
+                <field name="ChR_2">9</field>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="ps2x_read_gamepad" id="rLG%sG]8AIpk^G{Hj-/=">
+        <next>
+          <block type="procedures_callnoreturn" id="LzyS;Kzy9V}Y`0ODxu:j">
+            <mutation name="CheckRXY"></mutation>
+            <next>
+              <block type="time_delay" id="3Z~ICUCuo_DcvaFZgZ:%">
+                <value name="DELAY_TIME_MILI">
+                  <block type="math_number" id="aB[6C%]G)f:r9)K;w{jH">
+                    <field name="NUM">16</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id=":wbearhtQ5*/c?HJ6sH5" x="170" y="-470">
+    <field name="NAME">CheckRXY</field>
+    <comment pinned="false" h="80" w="160">描述該功能...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="Xm.l-FzyF%6zAU0kjiRF">
+        <mutation elseif="1" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="N|O0Gz)1vF+x:]?%bEB9">
+            <field name="OP">LTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id=".9vyd)cCw@U9iFfi4o(G">
+                <field name="PS2X_AnalogButton">PSS_RY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="KgESpao.IsffSx7+0|`^">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="annotation_l" id="H46zQhwAT1)@E-N):XoB">
+            <value name="annotation">
+              <block type="text" id=":hafKn5nD}21o9@}Lz~a">
+                <field name="TEXT">上部789</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="#HowcDAyTJ6U9@zA6noa">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="Z_8l9q)_761F]j1bayEJ">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="5Z.I59oKgbzTX%H5e#Xn">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="}|BDVx5W61x%kDZM}!qZ">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="U.Edmd.5ZEcm~@H%,q^b">
+                    <value name="annotation">
+                      <block type="text" id="B4M.JWOW0pFYRnZuK/VI">
+                        <field name="TEXT">左部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="*7tlXLVOZj/7vjf!9PV`">
+                        <field name="DCMotorFunction">RightForward</field>
+                        <value name="PWM">
+                          <block type="math_number" id="eMfyBKBf[Y+w,MT*0,u;">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="N-zeoxWU!^V6K!_C8oyG">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="mRa8l;4?8j.3|ka`7rzq">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="m*~UPgywBsG6`F?KoI)s">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="^tMlX?8(}tHV2Va.o5uJ">
+                    <value name="annotation">
+                      <block type="text" id="iD!Gh~!a=Aei_5Q6?WuM">
+                        <field name="TEXT">右部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="uMB;B88eg{6X(16M)0ff">
+                        <field name="DCMotorFunction">LeftForward</field>
+                        <value name="PWM">
+                          <block type="math_number" id="3ZuTdQ_){w20hz:72CA^">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="iUYH(^AfDr3}7@hE|.q;">
+                    <value name="annotation">
+                      <block type="text" id="EJzdF2QJXEIx#f?=!=rj">
+                        <field name="TEXT">中部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="/Q!bOcxW](=BOP:X1{s2">
+                        <field name="DCMotorFunction">Forward</field>
+                        <value name="PWM">
+                          <block type="math_number" id="-yfRYmxF~ro2:-qsL]:]">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="(71{uwy#Xon4|LjQdm?Z">
+            <field name="OP">GTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id="s1sgNio;ilBbN})@J7C#">
+                <field name="PS2X_AnalogButton">PSS_RY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="@1pw2U|46l2|_@*zeBRs">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="annotation_l" id="Eje..B?8n@~o?mK]`pHK">
+            <value name="annotation">
+              <block type="text" id="Tg^d*t~eJ;M#VI#9R*9q">
+                <field name="TEXT">下部123</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="P5;,Q_5B*k@zB223-w=E">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="coR(j~oROvXrpokZ?aA;">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="no6KE}Qu5!+UgGH:siAC">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="GiJ|KADQRU_+Udd0_=dy">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="@TIsBE[z]8YK/n]!+C(q">
+                    <value name="annotation">
+                      <block type="text" id="pmFd;a-2@-b1U!MGi(Mm">
+                        <field name="TEXT">左部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="CPT;O-FEk55/%a~._miq">
+                        <field name="DCMotorFunction">RightReverse</field>
+                        <value name="PWM">
+                          <block type="math_number" id="yLT!6H1fr!tXBM4~M]DB">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="8yDv2Kuh.M{{2JRIQ?27">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="M?d~%z[O20O3(|-|ebxm">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="6L|f8J5_0PCT-1R{Tr+G">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="K+*NfwpzqAtwvx=Rl=|V">
+                    <value name="annotation">
+                      <block type="text" id=".41]G%I/7DFQA1|6J^li">
+                        <field name="TEXT">右部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="ig;gh@;!=uy30Fz8Vivg">
+                        <field name="DCMotorFunction">LeftReverse</field>
+                        <value name="PWM">
+                          <block type="math_number" id="0R0vey~Z,wSv4OP!u)*L">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="TNsT3=nb@ANczB~#6mO)">
+                    <value name="annotation">
+                      <block type="text" id="7P6h?6k)X}EIy?cIA*F0">
+                        <field name="TEXT">中部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="?P+fF8GsbI[tm;:aDe6-">
+                        <field name="DCMotorFunction">Reverse</field>
+                        <value name="PWM">
+                          <block type="math_number" id="-_zmXTkoe-?7`os/8?T!">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="annotation_l" id="!b:!6]WO`.8q,pUR0s9V">
+            <value name="annotation">
+              <block type="text" id="Gn+ca(jMsCfS0x9vEO)r">
+                <field name="TEXT">中部456</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id=",E5*NyP-szvROW{Z+xbP">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="a{)}D`gK6E)+Naa;e9@w">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="eIEQy:wS7mUEjK3]d#lo">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="aueFF?)DLM[F@H+[fS{v">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="+o6T0o=mUO*1u]?L@RyC">
+                    <value name="annotation">
+                      <block type="text" id="or@-ufTl@#;m=-tp1CcK">
+                        <field name="TEXT">左部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="Nm#=TonO_j/dh8s:/r4p">
+                        <field name="DCMotorFunction">Stop</field>
+                        <value name="PWM">
+                          <block type="math_number" id="s3C?aelG)rT[2lm:*?]o">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="=dwwtg);sp|fW3+t:iBF">
+                    <field name="OP">GTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="-0;xQwZ?c?#dFp6l*lM9">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="V/MXkqJfO;UPX-IXMg1#">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="!0XGaw1(9drp#1}|!HVP">
+                    <value name="annotation">
+                      <block type="text" id="KI/SaU}wQm/.%#D,E?n+">
+                        <field name="TEXT">右部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="]KAL[fq#EiI=l!qC{=;U">
+                        <field name="DCMotorFunction">Stop</field>
+                        <value name="PWM">
+                          <block type="math_number" id="]T_@~rBBSjT.Q.c35K.7">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="2xa:%yvhJS~|{woMOpZt">
+                    <value name="annotation">
+                      <block type="text" id="!e8y1,6CXMg49n![!j6*">
+                        <field name="TEXT">中部</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="c6?*h#L?5fa_,2ks1fe0">
+                        <field name="DCMotorFunction">Stop</field>
+                        <value name="PWM">
+                          <block type="math_number" id="l2{}uc%#%GGYbg~{l.5h">
+                            <field name="NUM">100</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
