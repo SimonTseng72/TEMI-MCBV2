@@ -1,0 +1,89 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="fPr5o.:+e_T1ulkWuAm7" x="-110" y="10">
+    <statement name="SETUP_FUNC">
+      <block type="annotation_l" id="Hy0NQb_:H=9=VjmkpghN">
+        <value name="annotation">
+          <block type="text" id="qIh/`+F;f71Cmlw^YZ%W">
+            <field name="TEXT">先初始化伺服馬達的位置於90度(中間)</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_write" id="r`TI0SanCH/vtt@727rd">
+            <field name="SERVO_PIN">3</field>
+            <value name="SERVO_ANGLE">
+              <block type="math_number" id="EWp%}NBPmtvpXqpV@mQ6">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="ps2x_setup" id="eXciXcy#jQjo]Duc{P/U">
+                <field name="Data">13</field>
+                <field name="Command">19</field>
+                <field name="Attention">18</field>
+                <field name="Clock">2</field>
+                <next>
+                  <block type="variables_set" id="*A;?F!]jIDuP65e3Z#Wf">
+                    <field name="VAR">i</field>
+                    <value name="VALUE">
+                      <block type="variables_set_type" id="?DvzWj!ylit}d*C2VP#a">
+                        <field name="VARIABLE_SETTYPE_TYPE">FLOAT</field>
+                        <value name="VARIABLE_SETTYPE_INPUT">
+                          <block type="math_number" id="t2G2dyavH1AvH(`4o2-?">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="ps2x_read_gamepad" id="n6.T,@uzfxyfsu_7u_;`">
+        <next>
+          <block type="variables_set" id="bF9EP)L^N^PanC~_]]y6">
+            <field name="VAR">i</field>
+            <value name="VALUE">
+              <block type="ops_arithmetic" id="`|?(oaw0.CC,HWh0%;KY">
+                <field name="OP">MULTIPLY</field>
+                <value name="A">
+                  <block type="ps2x_Analog" id="j=uL=Gc`Iw=@N=2j1Q1L">
+                    <field name="PS2X_AnalogButton">PSS_RX</field>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="gv,OiD_!KSAU^K_n_:gB">
+                    <field name="NUM">0.7</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="servo_write" id="s{Ck^)f@^UHS]IKP=c:Y">
+                <field name="SERVO_PIN">3</field>
+                <value name="SERVO_ANGLE">
+                  <block type="variables_get" id="R=oIn,](;8{~%JIX[24R">
+                    <field name="VAR">i</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="!Rgl0+FV8Nzx5DV_^E+u">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="GcfR42wcxJK(5M|45l9T">
+                        <field name="NUM">20</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

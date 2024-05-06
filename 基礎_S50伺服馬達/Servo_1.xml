@@ -1,0 +1,80 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="fPr5o.:+e_T1ulkWuAm7" x="790" y="50">
+    <statement name="SETUP_FUNC">
+      <block type="annotation_l" id="Hy0NQb_:H=9=VjmkpghN">
+        <value name="annotation">
+          <block type="text" id="qIh/`+F;f71Cmlw^YZ%W">
+            <field name="TEXT">先初始化伺服馬達的位置於90度(中間)</field>
+          </block>
+        </value>
+        <next>
+          <block type="servo_write" id="Ew)#Qim5vclpd:GMz65O">
+            <field name="SERVO_PIN">11</field>
+            <value name="SERVO_ANGLE">
+              <block type="math_number" id="V6u_5BCFC8Q+eI;a=oi/">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="servo_write" id="D!m/Ze9mLXHBEf{%7IY1">
+        <field name="SERVO_PIN">11</field>
+        <value name="SERVO_ANGLE">
+          <block type="math_number" id="MNQ`,N4X?IM6cC:k-.`x">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="+k+D(ak;:7.-gUJnaHUc">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="ep1Eoo(HDNN#%;V;?jvZ">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="servo_write" id=";:q*w*G1L*lpNPMG:2SI">
+                <field name="SERVO_PIN">11</field>
+                <value name="SERVO_ANGLE">
+                  <block type="math_number" id="SF)DNY~SMh!lwq0@C+=k">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="yrK^xVR%{}7`]Qq8E06v">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="a~)KX_t5Gh{P|%H#FF(m">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="servo_write" id="]qbvokL]U8tu6XKJ-mC%">
+                        <field name="SERVO_PIN">11</field>
+                        <value name="SERVO_ANGLE">
+                          <block type="math_number" id="JTZi=IX-RtpQa?*R:ut!">
+                            <field name="NUM">180</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="time_delay" id="GS3T+W46`#|]}c{pHA:3">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="b8KX#I0!qJg|h.hZX|LY">
+                                <field name="NUM">1000</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

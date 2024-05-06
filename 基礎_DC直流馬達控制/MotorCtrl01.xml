@@ -1,0 +1,51 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="fPr5o.:+e_T1ulkWuAm7" x="210" y="70">
+    <statement name="SETUP_FUNC">
+      <block type="DCMotor_setup" id=",1H5mBlwH:(t}zS[KP5d">
+        <field name="PWM_Phase">1</field>
+        <field name="ChL_1">5</field>
+        <field name="ChL_2">6</field>
+        <field name="ChR_1">10</field>
+        <field name="ChR_2">9</field>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="DCMotorpwm_function" id="4]%w#WB[F5.nKWBL%,^c">
+        <field name="DCMotorFunction">Forward</field>
+        <value name="PWM">
+          <block type="math_number" id="+HW[}vXn[0@x%v2+g/Dj">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <next>
+          <block type="time_delay" id="/gv3W]6hO5`Mt/{c/RPk">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="}zDzugyxvmkmlg{JeWwG">
+                <field name="NUM">1000</field>
+              </block>
+            </value>
+            <next>
+              <block type="DCMotorpwm_function" id="zEC}b]@qaayV/|DxRwX^">
+                <field name="DCMotorFunction">Reverse</field>
+                <value name="PWM">
+                  <block type="math_number" id="VBda.IMSwtc!U_ep@th`">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="time_delay" id="?{^MD~1[@sVSuAti[%r7">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="97=MiS{Hop8!yRLlin-4">
+                        <field name="NUM">1000</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
