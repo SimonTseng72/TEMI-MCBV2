@@ -153,7 +153,6 @@ Image
 　必須設定選用正確的Ａrduino IDE(arduino.exe)當作Compiler及正確的電路板TEMI MCBV2，如果選擇錯誤表示使用錯誤的版本，那產生的Arduino程式碼將無法正確編譯下載至MCBV2電路板中運行。
 
 ![image](image/6.png)
-![image](images/7.png)
 
 #### Ardublockly軟體版面介紹
 
