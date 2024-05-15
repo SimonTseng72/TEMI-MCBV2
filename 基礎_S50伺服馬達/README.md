@@ -171,7 +171,7 @@ void loop() {
 ## 練習3.利用PS2的右搖桿X軸 ，控制Servo_1伺服馬達
 ### 積木程式
 ![image](image/405.png)
-![alt text](image.png)
+
 如上圖，將S50伺服馬達與MCBV2電路板的Servo_1連接,並連接好PS2無線無線搖桿
 組裝積木程式，於Arduino 初始化設定，將伺服馬達初始設定在90度位置，並初始化PS2搖桿
 新增一個folat型別的i變數，用來轉換PS2 RX軸的數據 0 ~ 255轉換成 0 ~ 180
