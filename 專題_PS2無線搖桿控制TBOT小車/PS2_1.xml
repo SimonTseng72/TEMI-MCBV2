@@ -1,0 +1,25 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id="fPr5o.:+e_T1ulkWuAm7" x="-10" y="50">
+    <statement name="SETUP_FUNC">
+      <block type="ps2x_setup" id="XFwP:=KA{udKnC*`xSqp">
+        <field name="Data">13</field>
+        <field name="Command">19</field>
+        <field name="Attention">18</field>
+        <field name="Clock">2</field>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="ps2x_read_gamepad" id="B1:9?^U@3.pvpE{o-q;u">
+        <next>
+          <block type="time_delay" id="cJ5awUKR1UlMf5wTT=s5">
+            <value name="DELAY_TIME_MILI">
+              <block type="math_number" id="hZqVwzqHl~f?/.HtseGz">
+                <field name="NUM">16</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>

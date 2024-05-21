@@ -1,0 +1,1018 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="arduino_functions" id=";;G*-_Tq`6GB6FaC9Xc1" x="-770" y="-430">
+    <statement name="SETUP_FUNC">
+      <block type="DCMotor_setup" id="vwC%mtByL34BOV#cye7H">
+        <field name="PWM_Phase">1</field>
+        <field name="ChL_1">5</field>
+        <field name="ChL_2">6</field>
+        <field name="ChR_1">10</field>
+        <field name="ChR_2">9</field>
+        <next>
+          <block type="ps2x_setup" id="V9d`cwqER1dOo%[!zfix">
+            <field name="Data">13</field>
+            <field name="Command">19</field>
+            <field name="Attention">18</field>
+            <field name="Clock">2</field>
+            <next>
+              <block type="variables_set" id=".r*Z8[|O)rajH:#Z*_Jv">
+                <field name="VAR">PS2_Speed</field>
+                <value name="VALUE">
+                  <block type="variables_set_type" id="{7c+mR+o:JX-FUybJ.t?">
+                    <field name="VARIABLE_SETTYPE_TYPE">BYTE</field>
+                    <value name="VARIABLE_SETTYPE_INPUT">
+                      <block type="math_number" id="0[N8/Pg-FY6_W[jP=@ni">
+                        <field name="NUM">150</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <statement name="LOOP_FUNC">
+      <block type="ps2x_read_gamepad" id="rLG%sG]8AIpk^G{Hj-/=">
+        <next>
+          <block type="procedures_callnoreturn" id="3yL[(+ksP4;n1Oe(*x;W">
+            <mutation name="SetupPs2Speed"></mutation>
+            <next>
+              <block type="controls_if" id="4|AGFSm`9kOmSBZ`!45|">
+                <value name="IF0">
+                  <block type="logic_negate" id="|6;}uOCan~+seNl}_q#:">
+                    <value name="BOOL">
+                      <block type="procedures_callreturn" id="6?~FA~CRwN}U1R*~fO|Z">
+                        <mutation name="CheckButton">
+                          <arg name="x"></arg>
+                        </mutation>
+                        <value name="ARG0">
+                          <block type="variables_get" id="_~n}uQPQ?wQOA{kCC[Q%">
+                            <field name="VAR">PS2_Speed</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="controls_if" id="TlGDyry6K_;Ew`kZ%YD8">
+                    <value name="IF0">
+                      <block type="logic_negate" id="NRCaens#ynbwNidCz1o/">
+                        <value name="BOOL">
+                          <block type="procedures_callreturn" id="adO_4xXP!Z/`-6diw7+g">
+                            <mutation name="Check_L_Axes">
+                              <arg name="x"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="variables_get" id="_,57hZX*3V/dSTO:B]8m">
+                                <field name="VAR">PS2_Speed</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="controls_if" id="(QUm=RP)3M%)|hUf^z:,">
+                        <value name="IF0">
+                          <block type="logic_negate" id="T2jle2)a#PaS!o?06oCz">
+                            <value name="BOOL">
+                              <block type="procedures_callreturn" id="BU6TG,|~Z3!/q.Yb/yB`">
+                                <mutation name="Check_R_Axes">
+                                  <arg name="x"></arg>
+                                </mutation>
+                                <value name="ARG0">
+                                  <block type="math_number" id="dAXDx,#S7X%?`.?9H6tK">
+                                    <field name="NUM">250</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="DCMotor_function" id="!Z5jkf{*]ZRd`+RI2?l;">
+                            <field name="DCMotorFunction">Stop</field>
+                          </block>
+                        </statement>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="time_delay" id="3Z~ICUCuo_DcvaFZgZ:%">
+                    <value name="DELAY_TIME_MILI">
+                      <block type="math_number" id="aB[6C%]G)f:r9)K;w{jH">
+                        <field name="NUM">16</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defreturn" id=",49g]s}YL31KY]J#l5JN" x="-230" y="-410">
+    <mutation>
+      <arg name="x" vartype="long"></arg>
+    </mutation>
+    <field name="NAME">CheckButton</field>
+    <field name="TYPE">byte</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id=",d3HL=e!9~Z0XhKt@951">
+        <mutation elseif="7" else="1"></mutation>
+        <value name="IF0">
+          <block type="ps2x_button" id="-qq+H3Hw#0it)k0}Tx~{">
+            <field name="PS2X_Button">PSB_TRIANGLE</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="DCMotorpwm_function" id=")?_9.l`OvExGY%Zp9N97">
+            <field name="DCMotorFunction">Forward</field>
+            <value name="PWM">
+              <block type="variables_get" id=".:KTGQ{_iA25+2Sb^[wp">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="ps2x_button" id="s`-Ub01|kUeh@y_F:aTd">
+            <field name="PS2X_Button">PSB_CROSS</field>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="DCMotorpwm_function" id="1i=CW01*IhX1mL]w0sL@">
+            <field name="DCMotorFunction">Reverse</field>
+            <value name="PWM">
+              <block type="variables_get" id="m!H/EoKWv4CDv@^4#5@s">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF2">
+          <block type="ps2x_button" id="iey1%|UDBo:gT|6;h`vz">
+            <field name="PS2X_Button">PSB_SQUARE</field>
+          </block>
+        </value>
+        <statement name="DO2">
+          <block type="DCMotorpwm_function" id="w*nV,qr5y#z[F8G;:L8_">
+            <field name="DCMotorFunction">Left</field>
+            <value name="PWM">
+              <block type="variables_get" id="kr{+Fw#J8Gr09%A2n@C*">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF3">
+          <block type="ps2x_button" id="uBGw]SVOf%gTxM6,dbbx">
+            <field name="PS2X_Button">PSB_CIRCLE</field>
+          </block>
+        </value>
+        <statement name="DO3">
+          <block type="DCMotorpwm_function" id="6nnn1`!!Gg]kmZH`q)F?">
+            <field name="DCMotorFunction">Right</field>
+            <value name="PWM">
+              <block type="variables_get" id="9JwDmv+|P(A@APTj)H~g">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF4">
+          <block type="ps2x_button" id="hhAWwt4jAUb-i=M3McdG">
+            <field name="PS2X_Button">PSB_PAD_UP</field>
+          </block>
+        </value>
+        <statement name="DO4">
+          <block type="DCMotorpwm_function" id="RwfLO7K8Q0{-,kbS6=5f">
+            <field name="DCMotorFunction">Forward</field>
+            <value name="PWM">
+              <block type="variables_get" id="Eu=|VYQCTfaV7C0F%vJp">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF5">
+          <block type="ps2x_button" id=":X6BXQ#kt2D7(jPerS^2">
+            <field name="PS2X_Button">PSB_PAD_DOWN</field>
+          </block>
+        </value>
+        <statement name="DO5">
+          <block type="DCMotorpwm_function" id="k4%y8y#S]io`i=`O^l|k">
+            <field name="DCMotorFunction">Reverse</field>
+            <value name="PWM">
+              <block type="variables_get" id="V0e9H8+_LZgyLYmALE3P">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF6">
+          <block type="ps2x_button" id="7s)[#j@XbL:OL(Ph+3ME">
+            <field name="PS2X_Button">PSB_PAD_LEFT</field>
+          </block>
+        </value>
+        <statement name="DO6">
+          <block type="DCMotorpwm_function" id="i);h^,z[__hN``OjoLR;">
+            <field name="DCMotorFunction">RightForward</field>
+            <value name="PWM">
+              <block type="variables_get" id="GlGbfmUdU%!TEGkMa037">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF7">
+          <block type="ps2x_button" id="Wwd:glsv7TumplMX[K7;">
+            <field name="PS2X_Button">PSB_PAD_RIGHT</field>
+          </block>
+        </value>
+        <statement name="DO7">
+          <block type="DCMotorpwm_function" id="axA;B3:RJz|mx|]}quW(">
+            <field name="DCMotorFunction">LeftForward</field>
+            <value name="PWM">
+              <block type="variables_get" id="Ws70zCetVJz7osd{=6VB">
+                <field name="VAR">x</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="procedures_return" id="wVpygS;wz^k))gZ4n+DI">
+            <mutation value="1"></mutation>
+            <value name="VALUE">
+              <block type="logic_boolean" id="blI2d-}D-}X58PRNOm)g">
+                <field name="BOOL">FALSE</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="logic_boolean" id="-vBXa#G)!s!(#^oz?dgf">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="zq-`(E849?oL8O:GJ9bv" x="190" y="-430">
+    <mutation>
+      <arg name="x" vartype="byte"></arg>
+    </mutation>
+    <field name="NAME">Check_L_Axes</field>
+    <field name="TYPE">byte</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="tH9*4A%p9)IhaxP88jb4">
+        <mutation elseif="1" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="?a~S=8ZdEqJeDcwQvilR">
+            <field name="OP">LTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id="{rS10!Ov0]B,[gH={@8S">
+                <field name="PS2X_AnalogButton">PSS_LY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="tXJ)fbfm(}oa~l8s?-(F">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="annotation_l" id=":hjx1+kvb}ut*6Cp_XA6">
+            <value name="annotation">
+              <block type="text" id="h6pI4#bt2[bY{0n]f_#y">
+                <field name="TEXT">上部: 789</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="Ck`_[oJ,P^?z]=y-OzDM">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="ae9H/g[iy)0bepek*bA8">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="4sK!@]NX*7~E0l=ek2|{">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="JFX/{w#%~4Dy/0ipgoAk">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="nO2{CxhDNn({nDtnYuiC">
+                    <value name="annotation">
+                      <block type="text" id="ZEIc8b,d/bP3!^py2G;w">
+                        <field name="TEXT">7</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="zX*2={-eEq52[FcwNEhm">
+                        <field name="DCMotorFunction">RightForward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="F}o[azeP~Z_muG??]=YO">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="QyenX,A)|/VOlIVXwV;U">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="T?@c0?WJ^,RL@=3m@tD@">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="YeVa[FEL4HQwUHsK~Jep">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="9lQ:l)A4Sx^|{*y:{Ci-">
+                    <value name="annotation">
+                      <block type="text" id="v8JsVQ_3s-1`4x;jX(kV">
+                        <field name="TEXT">8</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="-M(^sVx?(f3aMsEVuNZ`">
+                        <field name="DCMotorFunction">Forward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="S).F@mvy*!HW)(OJddPF">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="n-vjn!vU1KJJO{9yw)lA">
+                    <value name="annotation">
+                      <block type="text" id="JoNT+!~9IO5en:u?|]Yk">
+                        <field name="TEXT">9</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="SZQF4w+ZY4XZjaLn4`s;">
+                        <field name="DCMotorFunction">LeftForward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="Ah]Z+UqVM42vW3+5{==v">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="+HLx(6HrKW=YE=i0jcvz">
+            <field name="OP">LTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id="#G%-WCTA)8TQ5Bz7+i5`">
+                <field name="PS2X_AnalogButton">PSS_LY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="8D.vaC#dqggX5NSFBuQ`">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="annotation_l" id="E0D-zXx;umaScp!b.:o@">
+            <value name="annotation">
+              <block type="text" id="gKJi8hhGsz0u:9)W1nU[">
+                <field name="TEXT">中部: 456</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="R#bZ/qNN!I@grzi*YX2e">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="mu]LQNQqlp#uetcGaMnX">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="K?s]ovD]X{jIBCDZ_3(F">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="s!~O]gA/Bjatp4n@)Af{">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="Vu]!)H)Zf[QspL%-035W">
+                    <value name="annotation">
+                      <block type="text" id="{h=3buKli7lZ!)[8mw~U">
+                        <field name="TEXT">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="o}5G[xDHVUqi30lug*B!">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="4NkFzB2Hh;9o3M:8;|s(">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="}.YGvD0XAibTuFi*#r_v">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="AaETWy)=Gv%5ISzwRY@^">
+                    <value name="annotation">
+                      <block type="text" id="G@/^ZYFVK]PzsqCp)!Z.">
+                        <field name="TEXT">5</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_return" id="|:z*i=cznty6,;k+N8n`">
+                        <mutation value="1"></mutation>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="_/s%r@h^e1X7lcdkz@ua">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="mV=8#B+:/4Zb9eGMe*Ef">
+                    <value name="annotation">
+                      <block type="text" id="EoY`eA7._=xfAe6mg08+">
+                        <field name="TEXT">6</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="annotation_l" id="1?BeiG,n8S7KUV)AUv4o">
+            <value name="annotation">
+              <block type="text" id="3oS.sX}a5uaT;NnlOs(%">
+                <field name="TEXT">下部: 123</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="4G=b2W1(DuBw+wi^V+3Z">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="_gu~w`e{31q6I1#8tcx*">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="wS@FHpZaVUW4ik`2TJz}">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="G(6F,*~Yhkv,{RG17CkB">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="P@TMeVDUJ8mY{:k@k@F*">
+                    <value name="annotation">
+                      <block type="text" id="M_r1M49=0`RNXT/w1~7C">
+                        <field name="TEXT">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id=";0Gi6=yvyoolsJ+CyIb;">
+                        <field name="DCMotorFunction">RightReverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="z#oJp0WF2MJ]oHj81u4.">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="48^aXQ3E;T:[0Eqmh?-[">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="8,xxeSE4d)LN(`2jDcJ=">
+                        <field name="PS2X_AnalogButton">PSS_LX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="]7Y|+YUNOggzyiRp*GFQ">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="YZD^arNv,!R(~AxWI,-5">
+                    <value name="annotation">
+                      <block type="text" id="?kOq;j~|7rE^)~Pzs@-u">
+                        <field name="TEXT">2</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="kf=m^|4O5j1#-0u7Jf[5">
+                        <field name="DCMotorFunction">Reverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="K[G,:(4NOa@`XzxjJe+]">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="T1MMURS%e_B)7]Td?9no">
+                    <value name="annotation">
+                      <block type="text" id="R2F4cZLzc{lrd}!%/W%}">
+                        <field name="TEXT">3</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="8B{{`{iN/Bs?*?UOOHkj">
+                        <field name="DCMotorFunction">LeftReverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="o.x,v2o}}n^Q#QaRNI7e">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="logic_boolean" id="y1UiTs=aH0D]C{,.)zi`">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="6NE=T_?jMLR%YD?;X7Ii" x="810" y="-430">
+    <mutation>
+      <arg name="x" vartype="byte"></arg>
+    </mutation>
+    <field name="NAME">Check_R_Axes</field>
+    <field name="TYPE">byte</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="yq}?`doY=P_llOpBwgp-">
+        <mutation elseif="1" else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="!a]gIay/YbER3]Uj_`|3">
+            <field name="OP">LTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id="`5zHuH;@;fgj8SYf7gA{">
+                <field name="PS2X_AnalogButton">PSS_RY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="YzTu2(~!N1/eXU31T]kb">
+                <field name="NUM">50</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="annotation_l" id="@Z!8=Vt{Z)l#|Y~h?}Bi">
+            <value name="annotation">
+              <block type="text" id="wx}Z1:yrS;pL5t[wK}O-">
+                <field name="TEXT">上部: 789</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="_8!~7gfU.^!Csx[2e-AW">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="]R}V4l=M[ol8=[957[@l">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="vyv*Pr77;fd:5oMD3`{e">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="?vSODD9Mn:6j#=Iu,3gP">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="O^`9%K2/U:EZkJS9ah4K">
+                    <value name="annotation">
+                      <block type="text" id="vWJVb;GMh_F=aVZt2RPD">
+                        <field name="TEXT">7</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="iUw!Ld!A1*CWj_~M7-g=">
+                        <field name="DCMotorFunction">RightForward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="]H}N8*8-nlV:2HyhIiE`">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="1WadI}|mJ-I`[Y5EIf6Z">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="6.60frF,g)P[OSIE0PxY">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="JT{9Gs8%ZalB7j@FkKw5">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="d%1s8|Fl26|Vo)TL77H/">
+                    <value name="annotation">
+                      <block type="text" id="Qws?8B)W-JL9Z?=(+82,">
+                        <field name="TEXT">8</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="kuWvbS)k}h^T]4XWT+8A">
+                        <field name="DCMotorFunction">Forward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="[aHp,;Z6BLXr#4!%ySK=">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id=":bs`bI:BI=y1ispdU.Xg">
+                    <value name="annotation">
+                      <block type="text" id="Oa2_Td~,9;aeSHAvVV_O">
+                        <field name="TEXT">9</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="xc3.b2H49g*7!ebaQ7`p">
+                        <field name="DCMotorFunction">LeftForward</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="KFj+}AWN5^nr-mHkR+1Q">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="logic_compare" id="N{JzO@Cl43Oe)Glyx1HM">
+            <field name="OP">LTE</field>
+            <value name="A">
+              <block type="ps2x_Analog" id="xa3Y8IJ(1o,#;#XZYVe,">
+                <field name="PS2X_AnalogButton">PSS_RY</field>
+              </block>
+            </value>
+            <value name="B">
+              <block type="math_number" id="+N~q6Ww*rGyqu^zCgUA^">
+                <field name="NUM">200</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="annotation_l" id=")[^oqeY`5U#3%+~N)E6A">
+            <value name="annotation">
+              <block type="text" id=".;.mG^)({K]U|(5)0m|E">
+                <field name="TEXT">中部: 456</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="sVIhtb,gL0Qomi`!,#!Y">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="08;}sEjZW1@%/bdAwmqT">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="aRSie::Ieg:jpD5TWaf=">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="gKNBvpb@AgKrD_v[W79@">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="Q@ew{@6n5Hs~Y7pHIa;R">
+                    <value name="annotation">
+                      <block type="text" id="aw:eMjR=FbGCW5}Aj!{c">
+                        <field name="TEXT">4</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="v=Ut~S6;Mv=0^0:9nqdi">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="eMl?TdM?C2F*z]l.@(hr">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="/G[XK61_PBY|D%L)5jD1">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="G^|SP68V`|dWaSm^XiLq">
+                    <value name="annotation">
+                      <block type="text" id="{Tos)PI|RAQ]ppuv_JL.">
+                        <field name="TEXT">5</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="procedures_return" id="y7_5}Tn_567EpX05wN=?">
+                        <mutation value="1"></mutation>
+                        <value name="VALUE">
+                          <block type="logic_boolean" id="En4]zCuh^dk-%0F1*p*}">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="vT:F+yC|ES4e}0reWsl-">
+                    <value name="annotation">
+                      <block type="text" id="F8K^c~;y+GI[JaajDI,F">
+                        <field name="TEXT">6</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="annotation_l" id="@E4q}%cTqWZyNKV!/{^P">
+            <value name="annotation">
+              <block type="text" id="uMN7,+jDYTwZFR*`F8cJ">
+                <field name="TEXT">下部: 123</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="R9HP(F1`qyie;qSyFTy(">
+                <mutation elseif="1" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id="[vShj@5{|8X]IAJaDW2g">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="j@H}tWlqK4]Cyuy3o7=n">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="Z(U}uZ,_c%s%)0pAWinj">
+                        <field name="NUM">50</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="annotation_l" id="TCA`b,0f1K;xxy[zDfrz">
+                    <value name="annotation">
+                      <block type="text" id="+,I4Zp^Eyp)GI9g#)i-0">
+                        <field name="TEXT">1</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="|,51J9X)Q]LgrBO(FzQe">
+                        <field name="DCMotorFunction">RightReverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="WPnlvGR4lQF+NyDbuo`W">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="plc(*q6[NP7CCLeU,O?2">
+                    <field name="OP">LTE</field>
+                    <value name="A">
+                      <block type="ps2x_Analog" id="*~fV3#(vDkM@.WtnXfL4">
+                        <field name="PS2X_AnalogButton">PSS_RX</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="6@zbt0*P]u1Cr#X8U#Q_">
+                        <field name="NUM">200</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="annotation_l" id="2a9Tt|^03L=^oS5d7Dn?">
+                    <value name="annotation">
+                      <block type="text" id="pz27^;eXy4Ar*e?O2,0_">
+                        <field name="TEXT">2</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="ia][?VO8@5o7k,Znr+T(">
+                        <field name="DCMotorFunction">Reverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="Dai1Ra,*;Ug2P|5W}KO)">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="annotation_l" id="{)#t.tjgg_kdsgRxV2,f">
+                    <value name="annotation">
+                      <block type="text" id="i?y!gNJ~T]n(^8i_#v9^">
+                        <field name="TEXT">3</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="DCMotorpwm_function" id="qCB_x,g_/BRPL`k8rY~!">
+                        <field name="DCMotorFunction">LeftReverse</field>
+                        <value name="PWM">
+                          <block type="variables_get" id="36*{K0G/*A0M/KFv,0e;">
+                            <field name="VAR">x</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="logic_boolean" id="I7qIm^(zJ5_V?sTB9lX0">
+        <field name="BOOL">TRUE</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id="M4vUQs`@.;I|E43U;VrZ" x="-770" y="210">
+    <field name="NAME">SetupPs2Speed</field>
+    <comment pinned="false" h="80" w="160">Describe this function...</comment>
+    <statement name="STACK">
+      <block type="controls_if" id="q:u^ylJ~a`RoH|(geyBE">
+        <mutation elseif="3" else="1"></mutation>
+        <value name="IF0">
+          <block type="ps2x_button" id="v,!#{x0`v9m4|c2NaD.I">
+            <field name="PS2X_Button">PSB_L2</field>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="variables_set" id="CExD2PFHi:%u%f@}D!|V">
+            <field name="VAR">PS2_Speed</field>
+            <value name="VALUE">
+              <block type="variables_set_type" id="t3If`o6%4uyU+U|D3+ur">
+                <field name="VARIABLE_SETTYPE_TYPE">BYTE</field>
+                <value name="VARIABLE_SETTYPE_INPUT">
+                  <block type="math_number" id="@4]Q%3QX:Dy2-XPY:lbp">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF1">
+          <block type="ps2x_button" id="CBb1!1,;vE{/Gy0^30W5">
+            <field name="PS2X_Button">PSB_L1</field>
+          </block>
+        </value>
+        <statement name="DO1">
+          <block type="variables_set" id="_TmrQA=sA_Y-0qSzRxIL">
+            <field name="VAR">PS2_Speed</field>
+            <value name="VALUE">
+              <block type="variables_set_type" id="`@0rKH56(LB|j=75NQ}U">
+                <field name="VARIABLE_SETTYPE_TYPE">BYTE</field>
+                <value name="VARIABLE_SETTYPE_INPUT">
+                  <block type="math_number" id="CZ~}hr,]Nb-N_~1aeQBe">
+                    <field name="NUM">150</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF2">
+          <block type="ps2x_button" id="%RRB?6Pp[m#b9`ch8q[V">
+            <field name="PS2X_Button">PSB_R2</field>
+          </block>
+        </value>
+        <statement name="DO2">
+          <block type="variables_set" id="y%vt[~+N%20FsVTuMx~0">
+            <field name="VAR">PS2_Speed</field>
+            <value name="VALUE">
+              <block type="variables_set_type" id="N^lTmwmXz|*@Z4hol.1=">
+                <field name="VARIABLE_SETTYPE_TYPE">BYTE</field>
+                <value name="VARIABLE_SETTYPE_INPUT">
+                  <block type="math_number" id="4vnR`9PS)%r;}W%pJ(N!">
+                    <field name="NUM">200</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <value name="IF3">
+          <block type="ps2x_button" id="XZ]no6cdRw7[/76@hY3]">
+            <field name="PS2X_Button">PSB_R1</field>
+          </block>
+        </value>
+        <statement name="DO3">
+          <block type="variables_set" id="@7:#46f(rw(HJEq.^lqh">
+            <field name="VAR">PS2_Speed</field>
+            <value name="VALUE">
+              <block type="variables_set_type" id="3%bFfi0b}p^#dhd_R4BT">
+                <field name="VARIABLE_SETTYPE_TYPE">BYTE</field>
+                <value name="VARIABLE_SETTYPE_INPUT">
+                  <block type="math_number" id="@H_mPZ9y@C`b^*Z*l9;p">
+                    <field name="NUM">255</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
