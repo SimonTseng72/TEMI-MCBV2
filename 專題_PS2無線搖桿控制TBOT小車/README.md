@@ -23,7 +23,7 @@
 ![image](image/MCBV2_MCU.png)
 
 ### MCBV2 LED電路
-![image](image/LED_01.png)
+![image](image/led_01.png)
 
 <br>
 電路中使用RGB共陽極之三色LED燈，
