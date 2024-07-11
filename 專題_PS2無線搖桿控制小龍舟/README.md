@@ -273,4 +273,5 @@ void loop() {
 
 ### <a href="PS2_DragonBoat_01.xml">修改版 PS2_DragonBoat_01.xml</a>
 ### <a href="PS2_DragonBoat_11.xml">修改版 PS2_DragonBoat_11.xml</a>
-
+PS2_DragonBoat_22.xml 版本，利用左搖桿，控制龍舟前進後退，龍頭部分，原綠色鍵及紅色鍵控制奪標動作，改到R1，R2鍵，右邊功能鍵(綠色鍵,紅色鍵,藍色鍵,粉紅色鍵)，取代LX功能，用來控制划槳的速度，右搖桿的X軸，取代原L2,L1,R2,R1，控制舵的角度。
+### <a href="PS2_DragonBoat_22.xml">修改版 PS2_DragonBoat_22.xml</a>
